@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """defines a function that query a mongo db"""
 import pymongo
 

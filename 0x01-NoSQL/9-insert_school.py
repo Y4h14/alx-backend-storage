@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """defines a functio that inserts to a colection"""
 import pymongo
 
