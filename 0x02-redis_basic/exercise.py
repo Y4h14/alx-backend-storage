@@ -28,6 +28,30 @@ class Cache:
         """
         key_id = str(uuid.uuid4())
         self._redis.set(key_id, data)
-
         return key_id
+    
 
+    def get(self, key: str, fn: Callable) -> Any:
+        """
+        takes a key string and a callable to convert redis data
+        Parameters:
+            key (str): the key for the data
+            fn (Callable) : function that can be used to convert data
+                            back to the desired format
+        """
+        data = self._redis.get(key)
+        return fn(data) if fn is not None else data
+
+
+    def get_str(self, key: str) -> str:
+        """
+            conversts string format
+        """
+        return self.get(key, lambda x: x.decode('utf-8'))
+
+
+    def get_int(self, key: str) -> int:
+        """
+        converts a byte string into an int
+        """
+        return self.get(key, lambda x: int(x.decode('utf-8')))
