@@ -31,7 +31,7 @@ class Cache:
         return key_id
     
 
-    def get(self, key: str, fn: Callable) -> Any:
+    def get(self, key: str, fn: Callable) -> Union[str, int, float, bytes]:
         """
         takes a key string and a callable to convert redis data
         Parameters:
