@@ -2,6 +2,7 @@
 """defines a Cache class"""
 import redis
 import uuid
+from typing import Any, Callable, Union
 
 
 class Cache:
@@ -16,7 +17,7 @@ class Cache:
         self._redis.flushdb(True)
 
 
-    def store(self, data):
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         creates a key for the data, and store the data on redis
         Parameters:
